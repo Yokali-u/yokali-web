@@ -1,0 +1,103 @@
+/*
+ * YOKALI Design Tokens
+ * Centralizes primitive colors, semantic roles, typography, spacing,
+ * borders, radii, motion timings, and interactive states.
+ */
+
+:root {
+  /* 1. Primitive Palette */
+  --yk-forest-deep: #23483b;
+  --yk-forest-deep-hover: #1b382e;
+  --yk-terracotta: #a64935;
+  --yk-terracotta-hover: #8d3c2b;
+  --yk-ivory-warm: #f5f1e8;
+  --yk-forest-ink: #202924;
+  --yk-sage-soft: #dce5d9;
+  --yk-clay-soft: #ead2c5;
+  --yk-stone-green: #536158;
+  --yk-white: #ffffff;
+
+  /* 2. Semantic Surfaces */
+  --yk-surface-base: var(--yk-ivory-warm);
+  --yk-surface-elevated: var(--yk-white);
+  --yk-surface-forest: var(--yk-forest-deep);
+  --yk-surface-terracotta: var(--yk-terracotta);
+  --yk-surface-sage: var(--yk-sage-soft);
+  --yk-surface-clay: var(--yk-clay-soft);
+  --yk-surface-ink: var(--yk-forest-ink);
+
+  /* 3. Semantic Text / Ink */
+  --yk-ink-primary: var(--yk-forest-ink);
+  --yk-ink-secondary: var(--yk-stone-green);
+  --yk-ink-brand: var(--yk-forest-deep);
+  --yk-ink-accent: var(--yk-terracotta);
+  --yk-ink-on-dark: var(--yk-ivory-warm);
+  --yk-ink-on-dark-muted: #c8d3cb;
+  --yk-ink-on-terracotta: var(--yk-white);
+
+  /* 4. Semantic Borders */
+  --yk-border-subtle: rgba(32, 41, 36, 0.14);
+  --yk-border-strong: rgba(32, 41, 36, 0.28);
+  --yk-border-on-dark: rgba(245, 241, 232, 0.2);
+  --yk-border-width-hairline: 1px;
+  --yk-border-width-accent: 2px;
+
+  /* 5. Radii */
+  --yk-radius-none: 0px;
+  --yk-radius-sm: 4px;
+  --yk-radius-md: 12px;
+  --yk-radius-lg: 24px;
+  --yk-radius-organic: 28px;
+
+  /* 6. Motion & Transitions */
+  --yk-duration-fast: 160ms;
+  --yk-duration-base: 320ms;
+  --yk-duration-slow: 680ms;
+  --yk-duration-stroke: 1200ms;
+  --yk-ease-confluence: cubic-bezier(0.22, 1, 0.36, 1);
+
+  /* 7. Interactive Focus */
+  --yk-focus-ring-light: var(--yk-terracotta);
+  --yk-focus-ring-dark: var(--yk-clay-soft);
+}
+
+@theme {
+  /* Brand & Semantic Color Tokens for Tailwind Utilities */
+  --color-brand-forest: var(--yk-forest-deep);
+  --color-brand-forest-hover: var(--yk-forest-deep-hover);
+  --color-brand-terracotta: var(--yk-terracotta);
+  --color-brand-terracotta-hover: var(--yk-terracotta-hover);
+
+  --color-surface-base: var(--yk-surface-base);
+  --color-surface-elevated: var(--yk-surface-elevated);
+  --color-surface-forest: var(--yk-surface-forest);
+  --color-surface-terracotta: var(--yk-surface-terracotta);
+  --color-surface-sage: var(--yk-surface-sage);
+  --color-surface-clay: var(--yk-surface-clay);
+  --color-surface-ink: var(--yk-surface-ink);
+
+  --color-ink-primary: var(--yk-ink-primary);
+  --color-ink-secondary: var(--yk-ink-secondary);
+  --color-ink-brand: var(--yk-ink-brand);
+  --color-ink-accent: var(--yk-ink-accent);
+  --color-ink-on-dark: var(--yk-ink-on-dark);
+  --color-ink-on-dark-muted: var(--yk-ink-on-dark-muted);
+  --color-ink-on-terracotta: var(--yk-ink-on-terracotta);
+
+  --color-line-subtle: var(--yk-border-subtle);
+  --color-line-strong: var(--yk-border-strong);
+  --color-line-on-dark: var(--yk-border-on-dark);
+
+  /* Typography */
+  --font-display: "Fraunces", Georgia, "Times New Roman", serif;
+  --font-sans: "Manrope", ui-sans-serif, system-ui, -apple-system, sans-serif;
+
+  /* Radii */
+  --radius-editorial: var(--yk-radius-sm);
+  --radius-panel: var(--yk-radius-md);
+  --radius-organic: var(--yk-radius-organic);
+
+  /* Motion */
+  --ease-confluence: var(--yk-ease-confluence);
+  --animate-stroke-draw: yk-stroke-draw var(--yk-duration-stroke) var(--yk-ease-confluence) forwards;
+}

@@ -1,0 +1,158 @@
+@import "tailwindcss";
+@import "./tokens.css";
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    background-color: var(--yk-surface-base);
+    color: var(--yk-ink-primary);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    margin: 0;
+    background-color: var(--yk-surface-base);
+    color: var(--yk-ink-primary);
+    overflow-x: clip;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+    font-variation-settings: "opsz" 72, "SOFT" 45;
+  }
+
+  ::selection {
+    background-color: var(--yk-clay-soft);
+    color: var(--yk-forest-ink);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--yk-focus-ring-light);
+    outline-offset: 3px;
+  }
+
+  [data-surface="dark"] :focus-visible,
+  [data-surface="terracotta"] :focus-visible {
+    outline-color: var(--yk-focus-ring-dark);
+  }
+}
+
+/* Controlled confluence stroke motion */
+@keyframes yk-stroke-draw {
+  from {
+    stroke-dashoffset: var(--yk-path-length, 1000);
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+.yk-stroke-animated {
+  stroke-dasharray: var(--yk-path-length, 1000);
+  stroke-dashoffset: var(--yk-path-length, 1000);
+  animation: yk-stroke-draw var(--yk-duration-stroke) var(--yk-ease-confluence) forwards;
+  animation-delay: var(--yk-stroke-delay, 0ms);
+}
+
+.yk-reveal {
+  opacity: 0;
+  transform: translateY(14px);
+  transition:
+    opacity var(--yk-duration-slow) var(--yk-ease-confluence),
+    transform var(--yk-duration-slow) var(--yk-ease-confluence);
+}
+
+.yk-reveal[data-visible="true"] {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Navbar convergence hover & mobile staggered reveal */
+.yk-nav-hover-line::before,
+.yk-nav-hover-line::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  height: 1.5px;
+  width: 50%;
+  background-color: var(--yk-forest-deep);
+  opacity: 0;
+  transform: scaleX(0);
+  transition:
+    transform var(--yk-duration-base) var(--yk-ease-confluence),
+    opacity var(--yk-duration-fast) ease;
+}
+
+.yk-nav-hover-line::before {
+  left: 0;
+  transform-origin: left center;
+}
+
+.yk-nav-hover-line::after {
+  right: 0;
+  transform-origin: right center;
+}
+
+.yk-nav-hover-line:hover::before,
+.yk-nav-hover-line:hover::after,
+.yk-nav-hover-line:focus-visible::before,
+.yk-nav-hover-line:focus-visible::after {
+  opacity: 0.45;
+  transform: scaleX(1);
+}
+
+.yk-nav-hover-line[aria-current="page"]::before,
+.yk-nav-hover-line[aria-current="page"]::after {
+  opacity: 0;
+  transform: scaleX(0);
+}
+
+@keyframes yk-drawer-item-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.yk-drawer-item {
+  opacity: 0;
+  animation: yk-drawer-item-in var(--yk-duration-base) var(--yk-ease-confluence) forwards;
+  animation-delay: var(--yk-item-delay, 0ms);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .yk-stroke-animated {
+    animation: none;
+    stroke-dasharray: none;
+    stroke-dashoffset: 0;
+  }
+
+  .yk-reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .yk-nav-hover-line::before,
+  .yk-nav-hover-line::after {
+    transition: none;
+  }
+
+  .yk-drawer-item {
+    animation: none;
+    opacity: 1;
+  }
+}
