@@ -1,0 +1,22 @@
+# <tipo>(<alcance opcional>): <descripción breve en imperativo>
+#
+# Tipos permitidos (Conventional Commits):
+#   feat     : Nueva funcionalidad
+#   fix      : Corrección de error
+#   docs     : Cambios en documentación
+#   style    : Formato, espacios o estilo sin cambios de lógica
+#   refactor : Refactorización de código sin cambiar comportamiento
+#   perf     : Mejora de rendimiento
+#   test     : Adición o corrección de pruebas
+#   build    : Cambios en el sistema de build o dependencias
+#   ci       : Cambios en integración o despliegue continuo
+#   chore    : Tareas de mantenimiento o configuración
+#
+# Reglas recomendadas:
+# - Primera línea máximo 72 caracteres, sin punto final.
+# - Usa modo imperativo (ej. "add", "update", "fix", "remove").
+# - Deja una línea en blanco entre el título y el cuerpo.
+# - Explica el "qué" y el "por qué" en el cuerpo cuando sea necesario.
+#
+# Ejemplo:
+# feat(navbar): add sliding convergence indicator for active route
